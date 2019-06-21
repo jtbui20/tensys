@@ -1,8 +1,8 @@
 class game {
     // Initialize the two players
-    constructor() {
-        this.PlayerA = new player()
-        this.PlayerB = new player()
+    constructor(NameA, NameB) {
+        this.PlayerA = new player(NameA)
+        this.PlayerB = new player(NameB)
         this.PointNo = 0
         this.TieBreak = false
         this.score = [{
@@ -45,7 +45,7 @@ class game {
     }
 
     returnScore_compressed() {
-        return (this.PointNo + "#" + this.PlayerA.set + "," + this.PlayerA.game + "," + this.PlayerA.point + "||" + this.PlayerB.set + "," + this.PlayerB.game + "," + this.PlayerB.point)
+        return ("#" + this.PointNo + "|" + this.PlayerA.set + "," + this.PlayerA.game + "," + this.PlayerA.point + "|" + this.PlayerB.set + "," + this.PlayerB.game + "," + this.PlayerB.point)
     }
 
     addToObject() {
