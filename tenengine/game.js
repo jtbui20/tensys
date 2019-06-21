@@ -1,3 +1,20 @@
+/*
+Class game
+Inputs:
+- NameA (String Literal) -> Represents the name of PlayerA
+- NameB (String Literal) -> Represents the name of PlayerB
+
+Functions:
+- addPoint (Player) (Public function)
+    - (Player) as Input -> Represents the player which has won a point.
+    - return (c) -> Returns the status of the player's score being reset. Useful for determining when a game or set is won.
+- returnScore (c) (Public function)
+    - (c) as Input (Default = null) -> Represents the player whose's information should be returned
+    - return -> Returns a string containing information based on c and the current score
+0 returnScoreCompressed (c) (Public function)
+    - Pretty much the same thing except for the return value which is heavily compressed
+
+*/
 class game {
     // Initialize the two players
     constructor(NameA, NameB) {
