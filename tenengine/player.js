@@ -1,7 +1,7 @@
 class player {
     // Initialize statistics for player
-    constructor() {
-        this.name = "Player"
+    constructor(Name) {
+        this.name = (Name != "") ? Name : "Player"
         this.raw = 0
         this.point = 0
         this.game = 0
