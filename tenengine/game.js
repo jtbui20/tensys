@@ -62,7 +62,7 @@ class game {
     }
 
     returnScore_compressed() {
-        return ("#" + this.PointNo + "|" + this.PlayerA.set + "," + this.PlayerA.game + "," + this.PlayerA.point + "|" + this.PlayerB.set + "," + this.PlayerB.game + "," + this.PlayerB.point)
+        return (this.PointNo + "|" + this.PlayerA.set + "," + this.PlayerA.game + "," + this.PlayerA.point + "|" + this.PlayerB.set + "," + this.PlayerB.game + "," + this.PlayerB.point)
     }
 
     addToObject() {
