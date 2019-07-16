@@ -1,11 +1,12 @@
 class player {
     // Initialize statistics for player
-    constructor(Name) {
+    constructor(Name, MaxSet) {
         this.name = (Name != "") ? Name : "Player"
         this.raw = 0
         this.point = 0
         this.game = 0
         this.set = 0
+        this.max = MaxSet
     }
     // A function to append the score
     addPoint(opponentScore = 0) {
@@ -76,7 +77,7 @@ class player {
             }
         }
         // Update set to Match
-        if (this.set == 3) returnVal = 3
+        if (this.set == this.max) returnVal = 3
         return returnVal
     }
     reset(level) {
