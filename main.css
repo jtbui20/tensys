@@ -1,5 +1,6 @@
 body {
     background-color:white;
+    font-family: 'Roboto', sans-serif;
 }
 
 header {
@@ -16,6 +17,10 @@ h1 {
 div {
     margin: 0px;
     padding: 0px;
+}
+
+#title {
+    margin: auto;
 }
 
 #content {
