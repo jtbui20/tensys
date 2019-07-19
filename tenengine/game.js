@@ -17,10 +17,11 @@ Functions:
 */
 class game {
     // Initialize the two players
-    constructor(NameA, NameB) {
-        this.PlayerA = new player(NameA)
-        this.PlayerB = new player(NameB)
+    constructor(NameA, NameB, BestOf) {
+        this.PlayerA = new player(NameA, (BestOf + 1) / 2)
+        this.PlayerB = new player(NameB, (BestOf + 1) / 2)
         this.PointNo = 0
+        this.BestOf = BestOf
         this.TieBreak = false
         this.score = [{
             "PN": 0,
@@ -58,11 +59,19 @@ class game {
             default:
                 return (this.PlayerA.set + " | " + this.PlayerA.game + " | " + this.PlayerA.point + "\n" + this.PlayerB.set + " | " + this.PlayerB.game + " | " + this.PlayerB.point)
         }
-
     }
 
     returnScore_compressed() {
         return (this.PointNo + "|" + this.PlayerA.set + "," + this.PlayerA.game + "," + this.PlayerA.point + "|" + this.PlayerB.set + "," + this.PlayerB.game + "," + this.PlayerB.point)
+    }
+
+    export() {
+        return output = {
+            info: {
+                title: this.PlayerA.name + " vs " + this.PlayerB.NameB
+            },
+            score: this.score
+        }
     }
 
     addToObject() {
@@ -70,7 +79,7 @@ class game {
         t.PN = this.PointNo
         t.A = this.PlayerA.raw
         t.B = this.PlayerB.raw
-        t.retScore = this.returnScore()
+        t.retScore = this.returnScore_compressed()
         this.score.push({
             PN: t.PN,
             A: t.A,
