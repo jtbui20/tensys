@@ -65,15 +65,6 @@ class game {
         return (this.PointNo + "|" + this.PlayerA.set + "," + this.PlayerA.game + "," + this.PlayerA.point + "|" + this.PlayerB.set + "," + this.PlayerB.game + "," + this.PlayerB.point)
     }
 
-    export() {
-        return output = {
-            info: {
-                title: this.PlayerA.name + " vs " + this.PlayerB.NameB
-            },
-            score: this.score
-        }
-    }
-
     addToObject() {
         var t = {}
         t.PN = this.PointNo
