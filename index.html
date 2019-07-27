@@ -5,20 +5,26 @@
     <script src="tenengine/game.js"></script>
     <script src="tenengine/player.js"></script>
     <script src="svg.js"></script>
-    <script src="main.js"></script>
-    <!--
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    -->
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <script src="/src/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/src/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Tensys</title>
 </head>
 
 <body>
     <header>
         <h1 id="title">TenSys</h1>
+        <div id="navbar">
+            <a href="search.html" navSearch">Search</a>
+        </div>
     </header>
     <div id="content">
+        <div id="info">
+            Player A vs Player B
+        </div>
         <div id="graphic">
         </div>
         <div>
@@ -54,7 +60,9 @@
                     <td id="point"></td>
                 </tr>
             </table>
-            <div id="json"></div>
+            <input id="saveGraph" type="button" value="Save Graph" />
+            <input id="loadGraph" type="button" value="Load Graph" />
+            <input id="file" type="text"/>
         </div>
     </div>
 </body>
