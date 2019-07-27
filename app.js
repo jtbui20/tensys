@@ -22,3 +22,8 @@ app.post("/save", function(req, res) {
         res.send()
     })
 })
+
+app.post("/load", function (req, res) {
+    console.log(req.body)
+    res.send("sucess")
+})
