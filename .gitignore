@@ -1,6 +1,8 @@
 node_modules
 package.json
-app.js
 .vscode
 score.json
 testfiles
+package-lock.json
+.gitignore
+matches
