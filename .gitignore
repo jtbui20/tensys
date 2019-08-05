@@ -4,5 +4,5 @@ package.json
 score.json
 testfiles
 package-lock.json
-.gitignore
 matches
+sqlite3.exe

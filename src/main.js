@@ -1,16 +1,17 @@
-var width = 1000,
-    height = 520
+var width = 1200,
+    height = 500
 
 var view_width = 100,
     view_height = 52,
-    view_xScale = 1;
-view_yScale = 1;
+    view_xScale = 1,
+    view_yScale = 1;
 
 var graphic, trendline, circles, rearground
 
 var _game = new game("PlayerA", "PlayerB", 5)
 
 SVG.on(document, "DOMContentLoaded", () => {
+    width = document.getElementById("graphic").getAttribute("width")
     // Initialize Game Object
     // Initialize Event Handlers for Buttons
     document.getElementById("addPlayerA").addEventListener("click", () => add("A"))
@@ -23,7 +24,7 @@ SVG.on(document, "DOMContentLoaded", () => {
     document.getElementById("saveGraph").addEventListener("click", save)
     document.getElementById("loadGraph").addEventListener("click", load)
     // Initialize SVG Component
-    graphic = SVG('graphic').size(width, height).viewbox(0, (view_height) / -2, view_width, view_height)
+    graphic = SVG('graphic').size("100%", "100%").viewbox(0, (view_height) / -2, view_width, view_height).attr("preserverAspectRatio", "none")
     // Initialize layers here
     rearground = graphic.group()
     trendline = graphic.polyline().stroke({
@@ -62,7 +63,7 @@ function drawScore(condition, point) {
     trendline.plot(e)
     // Prepare circle groups
     var _cs = circles.group()
-    var _c = _cs.circle(0.5).move(point - 0.25, _location - 0.25).fill("#f00").data({
+    var _c = _cs.circle(0.5).move(point - 0.25, _location - 0.25).fill("#fff").data({
         score: _game.returnScore(),
         on: true
     })
@@ -83,7 +84,6 @@ function drawScore(condition, point) {
             _b.text("Add Note").font({
                 size: 1
             }).move(_c.x() + 1.5, _c.y() + 7).fill('#fff').click(() => {
-                alert("e")
             })
             _c.data({
                 on: false
@@ -156,7 +156,9 @@ function load() {
     $.ajax({
         type: "POST",
         url: "load",
-        data: document.getElementById('file').innerText,
+        data: JSON.stringify({
+            carrier: "text"
+        }),
         success: function (response) {
             alert("Graph has been retrieved")
         },

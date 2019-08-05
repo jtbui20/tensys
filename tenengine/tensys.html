@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="game.js"></script>
+    <script src="player.js"></script>
+    <script src="svg.js"></script>
+    <script src="/src/main.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="/src/normalize.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="content">
+        <div id="toolbar">
+            <ul>
+                <li><a>File</a></li>
+                <li><a>Edit</a></li>
+                <li><a>Help</a></li>
+                <li id="saveGraph"><a>Save</a></li>
+                <li id="loadGraph"><a>Load</a></li>
+            </ul>
+        </div>
+        <div id="graphic">
+        </div>
+        <div>
+            <table id="controls">
+                <tr>
+                    <td><input id="addPlayerA" type="button" value="PlayerA Point" /></td>
+                    <td><input id="addPlayerB" type="button" value="PlayerB Point" /></td>
+                </tr>
+                <tr>
+                    <td><input id="addNote" type="button" value="Add Note" onclick="" /></td>
+                    <td><input id="notice" type="text" /></td>
+                </tr>
+                <tr>
+                    <td><input id="scrollLeft" type="button" value="Scroll Left" /></td>
+                    <td><input id="scrollRight" type="button" value="Scroll Right" /></td>
+                </tr>
+                <tr>
+                    <td><input id="scrollUp" type="button" value="Scroll Up" /></td>
+                    <td><input id="scrollDown" type="button" value="Scroll Down" /></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
