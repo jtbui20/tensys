@@ -10,19 +10,22 @@ var graphic, trendline, circles, rearground
 
 var _game = new game("PlayerA", "PlayerB", 5)
 
-SVG.on(document, "DOMContentLoaded", () => {
-    width = document.getElementById("graphic").getAttribute("width")
+$(document).ready(() => {
     // Initialize Game Object
     // Initialize Event Handlers for Buttons
-    document.getElementById("addPlayerA").addEventListener("click", () => add("A"))
-    document.getElementById("addPlayerB").addEventListener("click", () => add("B"))
-    document.getElementById("scrollLeft").addEventListener("click", () => Scroll("out"))
-    document.getElementById("scrollRight").addEventListener("click", () => Scroll("in"))
-    document.getElementById("scrollUp").addEventListener("click", () => Scroll("up"))
-    document.getElementById("scrollDown").addEventListener("click", () => Scroll("down"))
+    $("#addPlayerA").click(() => add("A"))
+    $("#addPlayerB").click(() => add("B"))
+    $("#scrollLeft").click(() => Scroll("out"))
+    $("#scrollRight").click(() => Scroll("in"))
+    $("#scrollUp").click(() => Scroll("up"))
+    $("#scrollDown").click(() => Scroll("down"))
 
-    document.getElementById("saveGraph").addEventListener("click", save)
-    document.getElementById("loadGraph").addEventListener("click", load)
+    $("#saveGraph").click(save)
+    $("#loadGraph").click(load)
+})
+
+SVG.on(document, "DOMContentLoaded", () => {
+    width = document.getElementById("graphic").getAttribute("width")
     // Initialize SVG Component
     graphic = SVG('graphic').size("100%", "100%").viewbox(0, (view_height) / -2, view_width, view_height).attr("preserverAspectRatio", "none")
     // Initialize layers here

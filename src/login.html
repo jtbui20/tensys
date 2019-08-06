@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="page.js"></script>
+    <script src="login.js"></script>
+    <link rel="stylesheet" type="text/css" href="/src/main.css">
+    <link rel="stylesheet" type="text/css" href="/src/normalize.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Tensys</title>
+</head>
+
+<body>
+    <header>
+        <h1 id="title">TenSys</h1>
+        <div id="navbar">
+            <ul>
+                <li id="about">About</li>
+                <li id="view">View</li>
+                <li id="create">Create</li>
+                <li id="account">Login</li>
+            </ul>
+        </div>
+    </header>
+    <div id="holder">
+        <div id="login">
+            <form id="login-form" action="/login">
+                Username:<br>
+                <input type="text" name="username"><br>
+                Password:<br>
+                <input type="password" name="password">
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+    <footer>
+        <div>
+            <p>Text</p>
+        </div>
+    </footer>
+</body>
+
+</html>
