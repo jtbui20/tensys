@@ -144,12 +144,19 @@ function Automate() {
 }
 
 function save() {
+    let t = $("#properties").serializeArray()
+    _game.PlayerA.name = t[0].value
+    _game.PlayerB.name = t[1].value
+    _game.BestOf = t[2].value
+
+    console.log(_game)
     $.ajax({
         type: "POST",
         url: "save",
         data: JSON.stringify(_game.export()),
         success: function (response) {
-            alert("Graph has been saved")
+            if (response == "success") alert("Graph has been saved")
+            else alert(response)
         },
         contentType: "application/json"
     });

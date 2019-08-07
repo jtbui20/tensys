@@ -14,7 +14,7 @@ app.use(express.urlencoded())
 
 app.listen(port, () => console.log(`Running on ${port}`))
 
-app.get("/", (req,res) => {
+app.get("/", (req, res) => {
     res.sendFile(__dirname + "/src/home.html");
 })
 
@@ -35,18 +35,55 @@ app.get("/user/:username", (req, res) => {
     res.send(req.params)
 })
 
-app.post("/tenengine/save", (req, res) => {
-    let db = new sqlite.Database("./matches/directory.db")
-        content = req.body.info
-        file = content.PlayerA + "v" + content.PlayerB
-        path = "./matches/" + file + ".txt"
+app.get("/app/:id", (req, res) => {
+    res.send(req.params)
+})
 
-    fs.writeFile(path , req.body.history, (error) => {
+app.get("/view/retrieve", (req, res) => {
+    
+    let db = new sqlite.Database("./matches/directory.db")
+    db.all("SELECT * FROM dir", [], (err, rows) => {
+        if (err) throw err
+        console.log(rows)
+        res.send(rows)
+    })
+    db.close()
+})
+
+app.post("/tenengine/save", (req, res) => {
+    content = req.body.info
+    console.log(content)
+    if (content.PlayerA == "" || content.PlayerB == "" || content.BestOf == "") {
+        res.send("One or more entries were blank")
+        return
+    }
+    if (!content.PlayerA.match(/^[a-z]*$/i) || !content.PlayerB.match(/^[a-z]*$/i)) {
+        res.send("One or more Player fields are invalid, please reinput.")
+        return
+    }
+    if (!content.BestOf.match(/^[0-9]+$/)) {
+        res.send("Best of is not a valid figure")
+        return
+    }
+
+    file = content.PlayerA + "v" + content.PlayerB
+    path = "./matches/" + file + ".txt"
+    isExists = false
+    fs.exists(path, (bool) => isExists = bool)
+    fs.writeFile(path, req.body.history, (error) => {
         if (error) throw error;
-        db.run(`INSERT INTO dir (nameA, nameB, path) VALUES ("${ content.PlayerA}", "${content.PlayerB}", "${path}")`)
-        console.log(`Saved ${content.PlayerA} vs ${content.PlayerB} at ${path}`)
+
+        let db = new sqlite.Database("./matches/directory.db")
+        if (isExists) {
+            db.run(`UPDATE dir SET nameA = "${content.PlayerA}", nameB = "${content.PlayerB}" WHERE path = "${path}"`)
+            console.log(`Updated ${content.PlayerA} vs ${content.PlayerB} at ${path}`)
+        } else {
+            var count = db.run('SELECT COUNT (id) FROM dir')
+            db.run(`INSERT INTO dir (id, nameA, nameB, path) VALUES ("${count + 1}","${ content.PlayerA}", "${content.PlayerB}", "${path}")`)
+            console.log(`Saved ${content.PlayerA} vs ${content.PlayerB} at ${path}`)
+        }
         db.close()
-        res.send()
+        res.send("success")
     })
 })
 

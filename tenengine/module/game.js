@@ -72,7 +72,7 @@ class game {
             info: {
                 PlayerA: this.PlayerA.name,
                 PlayerB: this.PlayerB.name,
-                Bestof: this.Bestof
+                BestOf: this.BestOf
             },
             history: this.history
         }

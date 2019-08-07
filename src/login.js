@@ -4,7 +4,6 @@ $(document).ready(() => {
 
         var form = $("#login-form");
         var url = form.attr('action');
-        console.log(form.serialize())
         $.ajax({
             type: "POST",
             url: url,
@@ -12,7 +11,7 @@ $(document).ready(() => {
             success: function (data) {
                 switch (data) {
                     case "success":
-                        document.cookie = `username=${form.serialize().username}`
+                        document.cookie = `username=${form.serializeArray()[0].value}`
                 } // show response from the php script.
             }
         });

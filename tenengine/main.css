@@ -50,3 +50,10 @@ html, body {
     text-align: center
 }
 
+.panel {
+    display: block;
+    margin: 10px;
+    padding: 10px;
+    float: left;
+    background-color:#f0f0f0;
+}
